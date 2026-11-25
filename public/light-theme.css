@@ -1,0 +1,47 @@
+/* Mercek light theme. Shared surfaces cover existing market and Lab routes. */
+:root{color-scheme:light;--bg:#f4f7f6;--card:#ffffff;--card2:#edf3f0;--line:#d5e0da;--text:#162c24;--muted:#52685e;--green:#28713c;--teal:#147351;--red:#b63447;--gold:#865a16;--surface-soft:#f6f9f7;--accent-soft:#e7f4df;--shadow:0 5px 22px #173d2810}
+body{background:var(--bg);color:var(--text)}
+body>header{background:#ffffffed;border-color:var(--line)}
+.brandmark{background:#d6f4a6;color:#214b2d}.avatar{background:#e5efdf;color:#286539}
+.btn{background:#fff;border-color:#cbdacf;color:var(--text);box-shadow:0 1px 2px #173d2808}
+.btn:hover{background:#eef5eb;border-color:#82aa85}.btn.primary,.hub-actions .primary,.edu-bridge .btn-primary{background:#c3ed8e;color:#20452b;border-color:#acd773}.btn.primary:hover{background:#b4e574}
+.desktopnav button.active{background:var(--accent-soft);color:#285d32}.desktopnav button:hover{background:#edf4ef}
+.bottomnav{background:#fffffff5!important;border-color:var(--line)!important;box-shadow:0 -3px 20px #173d280c}
+.bottomnav button.active{color:#286638!important;background:#e8f4df}
+a,.textbutton,.refresh,.catalog-action{color:#22653b}.panel,.market,.cg-market,.lesson,.login-card{box-shadow:var(--shadow)}
+.hero,.research-discovery,.summary,.research-explainer,.research-answer,.edu-intro,.edu-bridge{background:linear-gradient(120deg,#e7f4df,#f0f6f2);border-color:#c2d9bd}
+.hero p,.summary p,.login-benefits,.email-label,.login-access,.universe-notice p,.universe-notice small{color:var(--muted)}
+.hero .orb,.orb:before,.orb:after{border-color:#6e9e6c55}
+.chip.active,.edu-chips .btn[aria-pressed="true"]{background:#e3f1d9;color:#285e32;border-color:#a2c589}
+.coinrow,.qa-facts>div,.qa-context,.qa-disclaimer{border-color:var(--line)}
+.coinrow:hover,.cg-row:hover,.universe-asset:hover{background:#f0f7ed}
+.cg-head{background:#edf3f0}.cg-status,.universe-notice{background:#eaf4e6;border-color:#bfd4b6}
+.cg-status-warning,.notice,.edu-data[data-kind="sample"],.edu-data[data-kind="stale"],.edu-data[data-kind="unavailable"]{background:#fff5df;border-color:#dfbf7d;color:#775115}
+.tip{background:linear-gradient(135deg,#eff5ee,#eaf0f7)}
+.exchange-card,.floating-token,.socialbtn,.mini-report,.universe-asset,.compare-picker,.compare-option,.eco-option,.hub-filter,.hub-glance,.edu-definitions>div,.edu-example-values>div,.edu-route button,.edu-myth,.edu-quiz details,.hub-route-detail{background:#fff;border-color:var(--line);color:var(--text)}
+.email-input,.compare-search input,.eco-picker input,.edu-search-row input,.research-body textarea,.catalog-search{background:var(--surface-soft);border-color:#c2d2c7;color:var(--text)}
+input::placeholder,textarea::placeholder{color:#62766b;opacity:1}
+.google-mark{color:#22412e}.login-card{box-shadow:0 15px 50px #173d2810}.floating-token{box-shadow:var(--shadow)}
+.universe-symbol{color:#286638}.universe-name small,.qa-context span,.qa-disclaimer{color:var(--muted)}
+.edu-data{background:#eaf5e8;border-color:#bfd5bd;color:#315c39}.edu-step{background:#e3efda;color:#356137}
+.edu-myth-label,.edu-coin .edu-missing{color:#865a16}
+.hub-page{--hub-mint:#2f713e;--hub-subtle:#52685e;--hub-edge:#c6d9ca}
+.hub-hero{background:radial-gradient(ellipse at 83% 30%,#d5eec8 0,transparent 46%),linear-gradient(128deg,#eef7e9,#f0f6f3);border-color:var(--hub-edge)}
+.hub-hero h1,.hub-glance li>span,.hub-route-detail h3{color:#193d2a}.hub-glance li+li{border-color:var(--line)}
+.hub-route-detail p{color:var(--muted)}.hub-page .edu-route button:hover,.hub-page .edu-route button[aria-expanded="true"]{background:#eaf5e3}
+.qa-section blockquote{background:#eaf4e6;border-color:#73a663}
+dialog{box-shadow:0 20px 80px #173d2826}dialog::backdrop{background:#16302445;backdrop-filter:blur(3px)}
+.toast{background:#d4edb4;color:#24462b;box-shadow:0 8px 40px #173d2826}
+.solana-lab{--lab-mint:#2c713e;--lab-line:#c8dacf;--lab-low:#f5f8f6}
+.lab-hero{background:radial-gradient(ellipse at 93% 14%,#d4edc9 0,transparent 50%),linear-gradient(126deg,#ecf6e6,#f1f7f4 73%);box-shadow:var(--shadow)}
+.lab-hero h1{color:#183c2a}.lab-network{background:#ffffffc9;border-color:#c3d7c4}
+.lab-report-head{background:#edf5e9;border-color:#c6d9c3}
+.lab-metrics>div,.lab-criteria>div,.lab-holdings>div{background:#f5f8f5;border-color:#d5e1d5}
+.solana-lab .lab-notice{color:#805615;border-color:#c49c52;background:#fff9eb;border-radius:0 8px 8px 0;padding:.65rem .8rem}
+.lab-demo-banner{background:#edf6df;border-color:#abc87e;box-shadow:var(--shadow)}.lab-demo-banner>strong{color:#355c23}
+.lab-demo-banner p{color:#52633f}.lab-guided{outline-color:#478340}
+#lab-guide{background:#fff;color:#1c3427;border-color:#94b984;box-shadow:0 20px 80px #173d2830}#lab-guide p{color:#506354}#lab-guide::backdrop{background:#1434252b}
+svg text{fill:var(--muted)}svg line[stroke="#263141"],svg path[stroke="#263141"]{stroke:var(--line)}
+@media print{body,.lab-report,.lab-report *{box-shadow:none!important}}
+#langselect{background:#f1f6ee!important;color:#284c32!important;border-color:#c8d7c9!important}
+@media(max-width:430px){body>header{padding-inline:12px;gap:6px}.brand{font-size:21px;gap:6px}.brandmark{width:29px;height:29px;flex-shrink:0}.brandmark svg{width:22px}.headerend{gap:4px;min-width:0}#langselect{width:74px!important;max-width:74px!important;font-size:12px!important;padding:6px 3px!important}.headerend :is(.mercek-guide-open,.avatar,.exit-demo){width:30px;min-width:30px;height:36px;min-height:36px;padding:3px;flex-shrink:0}.headerend .exit-demo{font-size:0}}

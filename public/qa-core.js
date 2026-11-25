@@ -1,0 +1,42 @@
+(function(root){'use strict';
+const D=86400000;
+const norm=s=>String(s??'').normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/ı/g,'i').replace(/ß/g,'ss').replace(/\s+/g,' ').trim();
+const words={bir:1,iki:2,uc:3,dort:4,bes:5,alti:6,yedi:7,sekiz:8,dokuz:9,on:10,one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,ein:1,eine:1,einen:1,zwei:2,drei:3,vier:4,funf:5,sechs:6,sieben:7,acht:8,neun:9,zehn:10,un:1,una:1,uno:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10,due:2,tre:3,quattro:4,cinque:5,sei:6,sette:7,otto:8,nove:9,dieci:10,один:1,одну:1,одна:1,два:2,две:2,три:3,четыре:4,четырех:4,пять:5,шесть:6,семь:7,восемь:8,девять:9,десять:10};
+function parse(q,{days=14,now=Date.now()}={}){
+const raw=norm(q);let s=raw.replace(/[\p{L}]+/gu,w=>words[w]??w);let count=null,start=null,end=null,invalidPeriod=false,explicit=false;
+const unit='saat|hour|stunden|hora|ore|час|gun|day|tag|дн|день|днеи|dia|giorn|hafta|week|woche|недел|semana|settiman|ay|month|monat|месяц|mes|mese|mesi|yil|year|jahr|год|года|лет|ano|ann';
+const m=s.match(new RegExp('(\\d+(?:[.,]\\d+)?)\\s*('+unit+')','u'));
+if(m){explicit=true;const n=Number(m[1].replace(',','.')),u=m[2];count=n*(/saat|hour|stunden|hora|ore|час/.test(u)?1/24:/hafta|week|woche|недел|semana|settiman/.test(u)?7:/yil|year|jahr|год|года|лет|ano|ann/.test(u)?365:/ay|month|monat|месяц|mes|mese|mesi/.test(u)?30:1);}
+else if(/(son|gecen|last|past|letzte|ultim|ultimo|ultima|последн|прошл).*?(hafta|week|woche|недел|semana|settiman)/u.test(raw))count=7;
+else if(/(son|gecen|last|past|letzte|ultim|ultimo|ultima|последн|прошл).*?(ay(?:in|da|lik)?\b|month|monat|месяц|mes\b|mese)/u.test(raw))count=30;
+else if(/(son|gecen|last|past|letzte|ultim|ultimo|ultima|последн|прошл).*?(yil|year|jahr|год|ano|anno)/u.test(raw))count=365;
+if(/yilbasindan|year.to.date|\bytd\b|seit jahresbeginn|desde enero|da inizio anno|с начала года/u.test(raw))count=Math.floor((now-Date.UTC(new Date(now).getUTCFullYear(),0,1))/D);
+const dates=[...raw.matchAll(/\b(20\d{2})-(\d{2})-(\d{2})\b|\b(\d{2})\.(\d{2})\.(20\d{2})\b/g)].map(m=>{const y=+(m[1]??m[6]),mo=+(m[2]??m[5])-1,d=+(m[3]??m[4]);const t=Date.UTC(y,mo,d),v=new Date(t);return v.getUTCFullYear()===y&&v.getUTCMonth()===mo&&v.getUTCDate()===d?t:NaN;});
+if(dates.length){explicit=true;if(dates.length!==2||dates.some(x=>!Number.isFinite(x))||dates[1]<dates[0]||dates[1]+D>Math.floor(now/D)*D||dates[1]-dates[0]>=730*D)invalidPeriod=true;else {start=dates[0];end=dates[1]+D-1;count=Math.round((dates[1]-dates[0])/D)+1;}}
+if(count!==null){explicit=true;invalidPeriod ||= !Number.isFinite(count)||!Number.isInteger(count)||count<1||count>730;}
+const tests={
+forecast:/gelecek|yarin|tahmin|kac.*(olur|olacak)|ne kadar.*yuksel|al(mali|inir|ayim)|sat(mali|ayim)|\bbuy\b|\bsell\b|should i|tomorrow|predict|forecast|prognos|morgen|kaufen|verkaufen|завтра|купить|прогноз|comprar|vender|manana|predecir|domani|comprare|vendere|previs/,
+levels:/destek|direnc|support|resistan|widerstand|unterstutz|поддерж|сопротив|soporte|resisten/,
+events:/neden|niye|sebep|etki|etkile|why|reason|impact|affect|warum|auswirk|почему|влия|por que|efecto|perche|influenz/,
+news:/haber|news|nachricht|новост|notici|notiz/,
+summary:/anlat|acikla|explain|erklar|erzahl|расскаж|explic|spiega|descrivi|ozet|durum|performans|nasil|degis|fiyat|hareket|artis|dus|yuksel|trend|sonuc|analiz|summary|summari|overview|perform|change|price|trend|review|zusammenfass|entwick|verlauf|ander|kurs|uberblick|сводк|итог|обзор|измен|цен|resum|cambi|precio|riassum|andament|prezzo|varia/,
+volume:/hacim|hacm|likidite|volume|liquid|volumen|объем|обьем|ликвид/,
+supply:/toplam.*miktar|total amount|arz|dolasim|maksimum|maksimal|sinirli|kac.*(adet|tane)|supply|circulat|maximum|angebot|umlauf|предложен|эмисси|oferta|circulante|emission/,
+cap:/piyasa deger|market cap|capitalization|capitalisation|marktkapital|капитализац|capitaliza/,
+purpose:/neden var|why.*exist|wozu|ne ise|nedir|ne demek|ne icin|amac|kullanim|proje|fayda|what is|what does|use case|purpose|utility|was ist|wofur|nutzen|что такое|для чего|que es|para que|cos.e|cosa.*serve|utilizz/,
+team:/kim.*arkasinda|arkasinda.*kim|kim.*(kur|yap|gelistir)|kuruc|ekip|sahib|founder|who.*(creat|found|built)|team|grunder|кто.*созда|основател|fundador|creador|fondator|creato/,
+tech:/hangi ag|which network|gas|islem ucret|transaction fee|teknoloji|nasil calis|blockchain|blok.?zincir|staking|stake|madenc|konsensus|mining|consensus|how.*work|proof.of|hash|technolog|funktioniert|технолог|работает|майнинг|como.*funciona|come.*funziona/,
+risk:/avantaj|dezavantaj|pros and cons|vorteil|nachteil|преимущ|недостат|ventaj|vantagg|risk|guven|dolandir|tehlike|hack|saldiri|safe|scam|fraud|sicher|betrug|риск|безопас|мошен|riesgo|segur|truffa|sicuro/,
+exchanges:/borsa|nereden.*(al|ulas)|nerede.*(islem|satil)|exchange|where.*(buy|trade)|borse|бирж|donde.*(compr|negoci)|dove.*(compr|scambi)/,
+current:/guncel|su an|bugun|anlik|simdi|current|right now|today|aktuell|heute|сеи.?час|сегодня|actual|hoy|attuale|oggi/,
+history:/tarihce|ne zaman|cikis|ilk.*(cik|islem)|history|when.*(launch|creat)|genesis|geschichte|wann|истори|когда|historia|cuando|storia|quando/,
+compare:/karsilastir|kiyas|fark|compare|versus|\bvs\b|vergleich|сравн|compar|differenz/};
+const topics=Object.entries(tests).filter(([,re])=>re.test(raw)).map(([k])=>k);if(topics.includes('purpose')&&/neden var|why.*exist|wozu/.test(raw)&&topics.includes('events'))topics.splice(topics.indexOf('events'),1);if(topics.includes('tech')&&topics.includes('summary')&&!explicit&&!/fiyat|price|kurs|цен|precio|prezzo|perform|ozet|summary|overview/.test(raw))topics.splice(topics.indexOf('summary'),1);if(topics.includes('exchanges')){const i=topics.indexOf('forecast');if(i>=0&& !/almali|alayim|should i|soll ich|следует|deberia|dovrei/.test(raw))topics.splice(i,1);}
+if(/genel.*(bilgi|bakis)|hakkinda.*(anlat|bilgi)|(?:bu coin|bu kripto|bitcoin|ethereum|solana).*?(anlat|tanit)|her sey|hersey|everything|tell me about|all about|alles.*(coin|krypto)|расскажи|todo sobre|tutto/.test(raw))for(const t of ['purpose','supply','summary','risk'])if(!topics.includes(t))topics.push(t);if(/24\s*(saat|hour|stunden|hora|ore|час)/.test(s)&&!topics.includes('current'))topics.push('current');if(explicit&&!topics.length)topics.push('summary');if(!topics.length&&/^(merhaba|selam|hello|hi|hallo|hola|ciao|привет)[!.? ]*$/u.test(raw))topics.push('greeting');
+return {kind:topics.includes('levels')?'levels':topics.includes('events')?'events':topics.includes('news')?'news':topics.some(x=>['summary','current','volume','cap'].includes(x))?'summary':topics[0]??'clarify',topics,days:count??days,start,end,explicit,invalidPeriod,normalized:raw};
+}
+function stats(h,intent){if(!h?.candles?.length)return null;const c=h.candles;if(intent.start!==null&&intent.start!==undefined){const w=c.filter(c=>c.closeTime>=intent.start&&c.closeTime<=intent.end),before=c.filter(c=>c.closeTime<intent.start).at(-1);if(!before||w.length!==intent.days||w.at(-1).closeTime!==intent.end||w[0].time!==intent.start)return null;const rows=[before,...w];const s=root.MercekResearch.periodStats(rows,intent.days);return s?{...s,volume:h.observation_only?null:s.volume,volumeChange:null}:null;}
+const d=intent.days;if(c.length<d+1)return null;const s=root.MercekResearch.periodStats(c,d);return s&&h.observation_only?{...s,volume:null,volumeChange:null}:s;}
+function profile(raw,id){if(!raw||raw.id!==id)throw Error('profile_mismatch');const plain=v=>String(v??'').replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/\s+/g,' ').trim().slice(0,12000);const links=(raw.links?.homepage??[]).filter(v=>{try{const u=new URL(v);return u.protocol==='https:'&&!u.username&&!u.password}catch{return false}}).slice(0,3);return {id,name:plain(raw.name),description:Object.fromEntries(Object.entries(raw.description??{}).map(([k,v])=>[k,plain(v)])),algorithm:plain(raw.hashing_algorithm),genesis:typeof raw.genesis_date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(raw.genesis_date)?raw.genesis_date:null,blockTime:Number.isFinite(raw.block_time_in_minutes)&&raw.block_time_in_minutes>0?raw.block_time_in_minutes:null,categories:(raw.categories??[]).filter(x=>typeof x==='string').slice(0,12).map(plain),platform:plain(raw.asset_platform_id),links};}
+root.MercekQA={norm,parse,stats,profile};
+})(globalThis);
