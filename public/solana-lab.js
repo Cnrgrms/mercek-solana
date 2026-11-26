@@ -161,13 +161,64 @@
     scopeMeasured:['Ölçülen kriterler','Measured criteria'],
     zeroSupply:['Mint arzı sıfır olduğu için arz payı hesaplanamaz. Bu kriterin 25 puanı kapsama eklenmez.','Supply share cannot be calculated from a zero mint supply. The criterion’s 25 points are excluded from data coverage.']
   });
+  Object.assign(words,{
+    demoTitle:['DEMO · Örnek veriler','DEMO · Sample data'],
+    demoText:['Tüm sayısal değerler, yetkiler, havuz ve cüzdan bilgileri eğitim senaryosudur. Zincirden doğrulanmış güncel veri değildir.','All numbers, authorities, pool and wallet details are an educational scenario. They are not current data verified on-chain.'],
+    liveTitle:['CANLI VERİ MODU','LIVE DATA MODE'],
+    liveText:['Kaynaklara erişilemediğinde eksik alanlar işaretlenir.','Missing fields are marked when sources are unavailable.'],
+    goLive:['Canlı veriye geç','Switch to live data'], demoOn:['Demo modunu aç','Open demo mode'],
+    previewSummary:['Hackathon önizlemesi · Yetki karşılaştırması ve cüzdan senaryoları','Hackathon preview · Authority comparison and wallet scenarios'],
+    mintPlaceholder:['Solana mint adresini yapıştır','Paste Solana mint address'],
+    pickerSummary:['Token adı veya sembolüyle ara','Search by token name or symbol'],
+    pickerLabel:['Listeden token seç','Choose a token from the list'],
+    pickerPlaceholder:['Ad, sembol veya mint adresi ara','Search name, symbol or mint address'],
+    pickerSearch:['Diğer tokenları ara','Search other tokens'],
+    pickerHint:['Kayıtlı tokenlar anında süzülür. Diğer tokenları ara, Jupiter kaynağını sorgular. Aynı isimli tokenlarda mint adresini kontrol et.','Saved tokens filter instantly. Searching other tokens queries Jupiter. For tokens with the same name, check the mint address.'],
+    pickerSelect:['Seç ve analiz et','Select and analyze'],
+    pickerEmpty:['Listede eşleşme yok. Diğer tokenları ara düğmesini kullanabilir veya mint adresini aşağıya yapıştırabilirsin.','No match in the list. You can use the search button for other tokens or paste the mint address below.'],
+    pickerDevnet:['Jupiter araması Mainnet içindir. Devnet mint adresini aşağıya girebilirsin.','Jupiter search is for Mainnet. You can enter a Devnet mint address below.'],
+    pickerSearching:['Jupiter üzerinde aranıyor…','Searching on Jupiter…'],
+    pickerResults:['Jupiter · {n} sonuç. İsim ve mint adresini birlikte kontrol et.','Jupiter · {n} results. Check the name and mint address together.'],
+    pickerNoResults:['Jupiter eşleşme döndürmedi.','Jupiter returned no match.'],
+    pickerFailed:['Arama kaynağına erişilemedi. {reason} Kayıtlı tokenları seçebilir veya mint adresi girebilirsin.','The search source was unavailable. {reason} You can choose a saved token or enter a mint address.'],
+    demoNetwork:['DEMO · Ağ durumu senaryosu · Slot {slot}','DEMO · Network status scenario · Slot {slot}'],
+    activityFmt:['{n} işlem / 24s','{n} trades in 24h'],
+    demoSource:['DEMO · Eğitim senaryosu','DEMO · Educational scenario'],
+    unitSec:['sn','sec'], unitMin:['dk','min'],
+    method_mint:['Aktif yetki tam risk puanı, kapalı yetki sıfır puan.','Enabled earns full risk points, disabled earns zero.'],
+    method_freeze:['Aktif yetki tam risk puanı, kapalı yetki sıfır puan.','Enabled earns full risk points, disabled earns zero.'],
+    method_holders:['%20, %40, %60 ve %80 üst sınırları sırasıyla 0, 7, 15 ve 21 risk puanı. %80 üzeri 25.','At most 20%, 40%, 60% and 80% contribute 0, 7, 15 and 21 risk points. Above 80% contributes 25.'],
+    method_liquidity:['USD likiditesi alt sınırları 5 bin, 25 bin, 100 bin ve 1 milyon. Karşılık gelen risk puanları 17, 12, 5 ve 0. 5 bin altı 20 puan.','USD liquidity minimums of 5k, 25k, 100k and 1m contribute 17, 12, 5 and 0. Below 5k contributes 20.'],
+    method_activity:['24 saatte işlem ve USD hacmi alt sınırları (20 / 1 bin), (100 / 10 bin), (1.000 / 100 bin) için risk sırasıyla 6, 3, 0. Daha düşük pozitif aktivite 9, sıfır aktivite veya hacim 10.','Trade count and USD volume thresholds of (20 / 1k), (100 / 10k), and (1,000 / 100k) contribute 6, 3, and 0 risk points. Lower positive activity contributes 9, and zero trades or volume contributes 10.'],
+    method_verification:['Doğrulama yoksa 5 risk puanı. Organic Score her 20 puanda 1 risk puanı düşürür (azami 5).','Unverified contributes 5 risk points. Every 20 Organic Score points reduces risk by 1 (up to 5).'],
+    demoReport:['DEMO · Bu karnedeki değerler ve yetki adresleri eğitim senaryosudur.','DEMO · The values and authority addresses in this report are an educational scenario.'],
+    scoreHow:['Skor nasıl hesaplandı?','How was this score calculated?'],
+    fieldsMeaning:['Bu bilgiler ne anlama gelir?','What do these fields mean?'],
+    demoModel:['DEMO · Model bağlantısı kullanılmaz. Özet karnedeki örnek ölçümlerden hazırlanır.','DEMO · No model connection is used. The summary is prepared from the sample measurements in the report.'],
+    phantomHelp:['Phantom açılmadı mı?','Phantom did not open?'],
+    phantomHelpBody:['Mercek bağlantısını kopyala. Phantom’u aç, Siteler bölümündeki arama çubuğuna bağlantıyı yapıştır. Sayfayı açınca Cüzdanı bağla seçeneğini kullan.','Copy the Mercek link. Open Phantom, go to Sites and paste the link into its search bar. Open the result, then choose Connect wallet.'],
+    phantomLinkLabel:['Mercek cüzdan bağlantısı','Mercek wallet link'], copyLink:['Bağlantıyı kopyala','Copy link'],
+    linkSelected:['Bağlantı seçildi. Cihazındaki Kopyala seçeneğini kullan.','Link selected. Use your device’s Copy option.'],
+    demoWallet:['DEMO cüzdan · Hayalî bakiye ve varlıklar. Gerçek cüzdan bağlantısı kurulmaz.','DEMO wallet · Fictional balances and holdings. No real wallet connection is made.'],
+    demoWalletOpen:['Demo cüzdanını aç','Open demo wallet'],
+    authClosed:['kapalı','disabled'], authOpen:['etkin','enabled'],
+    demoSummary:['{name} · Demo karnesinde risk göstergesi {score}/100, veri kapsamı {coverage}/100. Mint yetkisi {mint}, freeze yetkisi {freeze}. En büyük örnek token hesabı arzın %{share} payını temsil ediyor. Likidite {liquidity}. Yetkiler token üretme ve hesap dondurma yeteneği açısından, yoğunlaşma ve likidite ise piyasa hareketlerinin etkisi açısından birlikte okunmalıdır. Değerler eğitim senaryosudur. Kural tabanlı açıklama · yatırım tavsiyesi değildir.','{name} · In the demo report the risk indicator is {score}/100 and data coverage is {coverage}/100. Mint authority is {mint}, freeze authority is {freeze}. The largest sample token account represents {share}% of supply. Liquidity is {liquidity}. Authorities should be read for their ability to issue tokens and freeze accounts, and concentration and liquidity for their effect on market moves. The values are an educational scenario. Rules-based explanation · not investment advice.']
+  });
   const examples=globalThis.MercekSolanaExamples;
   const reportMath=globalThis.MercekSolanaReportMath;
   const explorer=globalThis.MercekSolanaExplorer;
   const juryTokens=examples.mainnet.filter(token=>['USDC','BONK'].includes(token.symbol));
   const juryMints=juryTokens.map(token=>token.mint).join(',');
-  const langIndex=()=>lang==='en'?1:0;
-  const w=key=>(words[key]||words.upstream_error)[langIndex()];
+  const labLangs=['tr','en','de','ru','es','it'];
+  const labLocales={tr:'tr-TR',en:'en-US',de:'de-DE',ru:'ru-RU',es:'es-ES',it:'it-IT'};
+  const labLang=()=>typeof lang==='string'&&labLangs.includes(lang)?lang:'tr';
+  const labI18n=globalThis.MercekSolanaLabI18n||{};
+  const locale=()=>labLocales[labLang()];
+  const w=key=>{
+    const known=Object.hasOwn(words,key)?key:'upstream_error',code=labLang();
+    return code==='tr'?words[known][0]:code==='en'?words[known][1]:(labI18n[code]?.[known]??words[known][1]);
+  };
+  const wf=(key,values)=>w(key).replace(/\{(\w+)\}/g,(match,name)=>values[name]??match);
   const h=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const state={demo:true,tour:-1,pickerQuery:'',pickerRemote:[],pickerMessage:'',pickerRun:0,network:'mainnet',mint:'',report:null,networkStatus:null,wallet:null,portfolio:null,reportRun:0,walletRun:0,walletAiRun:0,walletAi:null,walletAiStatus:'',connectRun:0,connecting:false,networkRun:0,aiRun:0,scanMessage:'',walletMessage:'',ai:null,aiMessage:'',shareMessage:''};
   const wallets=new Set();
@@ -190,9 +241,9 @@
   const canCompare=()=>!state.demo&&state.network==='mainnet';
   const sharedComparison=juryLanding&&canCompare()&&routes.get('compare')===juryMints;
   const comparisonUrl=()=>new URL(juryLink+'&'+new URLSearchParams({compare:juryMints}),location.origin).href;
-  const format=(n,opts={})=>typeof n==='number'&&Number.isFinite(n)?new Intl.NumberFormat(langIndex()?'en-US':'tr-TR',{maximumFractionDigits:6,...opts}).format(n):w('unknown');
+  const format=(n,opts={})=>typeof n==='number'&&Number.isFinite(n)?new Intl.NumberFormat(locale(),{maximumFractionDigits:6,...opts}).format(n):w('unknown');
   const usd=n=>format(n,{style:'currency',currency:'USD',maximumFractionDigits:n>=1?2:8});
-  const textDate=iso=>iso?new Intl.DateTimeFormat(langIndex()?'en-US':'tr-TR',{dateStyle:'medium',timeStyle:'medium'}).format(new Date(iso)):w('unknown');
+  const textDate=iso=>iso?new Intl.DateTimeFormat(locale(),{dateStyle:'medium',timeStyle:'medium'}).format(new Date(iso)):w('unknown');
   const request=async(path,args={},method='GET')=>{
     args={...args,mode:state.demo?'demo':'live'};
     const options={method,signal:AbortSignal.timeout(30000)};
@@ -210,8 +261,8 @@
   const section=(id,title,content)=>`<section id="${id}" class="lab-card panel"><h2>${w(title)}</h2>${content}</section>`;
   const metric=(key,value)=>`<div><dt>${w(key)}</dt><dd>${h(value)}</dd></div>`;
   const controlled=(id,text,style='')=>`<button class="btn ${style}" type="button" data-lab-action="${id}">${w(text)}</button>`;
-  const panels=()=>`<div class="solana-lab" lang="${langIndex()?'en':'tr'}">
-    <div class="lab-demo-banner" role="status"><strong>${state.demo?'DEMO · Örnek veriler':'CANLI VERİ MODU'}</strong><p>${state.demo?'Tüm sayısal değerler, yetkiler, havuz ve cüzdan bilgileri eğitim senaryosudur. Zincirden doğrulanmış güncel veri değildir.':'Kaynaklara erişilemediğinde eksik alanlar işaretlenir.'}</p><div class="lab-actions"><button class="btn" data-lab-action="mode">${state.demo?'Canlı veriye geç':'Demo modunu aç'}</button><button class="btn" data-lab-action="guide">Nasıl kullanılır?</button></div></div>
+  const panels=()=>`<div class="solana-lab" lang="${labLang()}">
+    <div class="lab-demo-banner" role="status"><strong>${w(state.demo?'demoTitle':'liveTitle')}</strong><p>${w(state.demo?'demoText':'liveText')}</p><div class="lab-actions"><button class="btn" data-lab-action="mode">${w(state.demo?'goLive':'demoOn')}</button><button class="btn" data-lab-action="guide">Nasıl kullanılır?</button></div></div>
     <header class="lab-hero">
       <div><p class="eyebrow">${w('kicker')}</p><h1>${w('title')}</h1><p class="lab-tagline">Look Beyond the Price.</p><p>${w('lead')}</p>${canCompare()?'<div class="lab-actions">'+controlled('compare-live','compareLive','primary')+'</div>':''}</div>
       <div class="lab-network"><label for="lab-network">${w('status')}</label>
@@ -221,15 +272,15 @@
     </header>
     <div id="lab-comparison" aria-live="polite"></div>
     ${state.demo?`<details class="lab-card panel lab-jury-panel"${previewLanding?' open':''}>
-      <summary>Hackathon önizlemesi · Yetki karşılaştırması ve cüzdan senaryoları</summary>
+      <summary>${w('previewSummary')}</summary>
       <mercek-jury-preview></mercek-jury-preview>
     </details>`:''}
     <div class="lab-start">
       ${section('lab-scan','scanner',`<p>${w(state.network==='devnet'?'dev':'main')}</p>
         <form id="lab-form"><label for="lab-mint">${w('look')}</label><div class="lab-input-row">
-        <input id="lab-mint" value="${h(state.mint)}" spellcheck="false" autocomplete="off" maxlength="44" placeholder="${langIndex()?'Paste Solana mint address':'Solana mint adresini yapıştır'}">
+        <input id="lab-mint" value="${h(state.mint)}" spellcheck="false" autocomplete="off" maxlength="44" placeholder="${h(w('mintPlaceholder'))}">
         <button class="btn primary" type="submit">${w('scan')}</button></div></form>
-        <div class="lab-actions"><span>${networkName()} · ${w('example')}</span>${examples[state.network].map(({name,mint})=>`<button class="btn" type="button" data-example-mint="${mint}">${name}</button>`).join('')}</div><p id="lab-scan-feedback" role="status"></p><details class="lab-picker"><summary>Token adı veya sembolüyle ara</summary><div class="lab-picker-content"><label for="lab-token-query">Listeden token seç</label><div class="lab-input-row"><input id="lab-token-query" type="search" value="${h(state.pickerQuery)}" placeholder="Ad, sembol veya mint adresi ara" autocomplete="off"><button type="button" class="btn" data-lab-action="search-tokens">Diğer tokenları ara</button></div><p class="lab-picker-hint">Kayıtlı tokenlar anında süzülür. Diğer tokenları ara, Jupiter kaynağını sorgular. Aynı isimli tokenlarda mint adresini kontrol et.</p><div id="lab-token-options" class="lab-token-options"></div><p id="lab-token-search-status" role="status"></p></div></details>`)}
+        <div class="lab-actions"><span>${networkName()} · ${w('example')}</span>${examples[state.network].map(({name,mint})=>`<button class="btn" type="button" data-example-mint="${mint}">${name}</button>`).join('')}</div><p id="lab-scan-feedback" role="status"></p><details class="lab-picker"><summary>${w('pickerSummary')}</summary><div class="lab-picker-content"><label for="lab-token-query">${w('pickerLabel')}</label><div class="lab-input-row"><input id="lab-token-query" type="search" value="${h(state.pickerQuery)}" placeholder="${h(w('pickerPlaceholder'))}" autocomplete="off"><button type="button" class="btn" data-lab-action="search-tokens">${w('pickerSearch')}</button></div><p class="lab-picker-hint">${w('pickerHint')}</p><div id="lab-token-options" class="lab-token-options"></div><p id="lab-token-search-status" role="status"></p></div></details>`)}
       ${section('lab-market','overview',`<p>CoinGecko · Mercek</p>${controlled('market','watch','primary')}`)}
     </div>
     <div id="lab-report"></div>
@@ -239,7 +290,7 @@
     const node=document.querySelector('#lab-network-result');
     if(!node)return;
     const result=state.networkStatus;
-    node.textContent=result?.slot!==undefined&&state.demo?'DEMO · Ağ durumu senaryosu · Slot '+format(result.slot):result?.slot!==undefined?`${networkName()} · Slot ${format(result.slot)}`+(result.provider?' · '+result.provider:''):result?.error?w(result.error):w('loading');
+    node.textContent=result?.slot!==undefined&&state.demo?wf('demoNetwork',{slot:format(result.slot)}):result?.slot!==undefined?`${networkName()} · Slot ${format(result.slot)}`+(result.provider?' · '+result.provider:''):result?.error?w(result.error):w('loading');
   }
   async function loadNetwork() {
     const run=++state.networkRun;
@@ -253,11 +304,11 @@
     if(id==='mint'||id==='freeze')return observed===true?w('revoked'):observed===false?w('enabled'):w('unknown');
     if(id==='holders')return observed==null?w('unknown'):format(observed)+'%';
     if(id==='liquidity')return usd(observed);
-    if(id==='activity')return observed==null?w('unknown'):format(observed)+(langIndex()?' trades in 24h':' işlem / 24s');
+    if(id==='activity')return observed==null?w('unknown'):wf('activityFmt',{n:format(observed)});
     return observed==null?w('unknown'):'Organic Score '+format(observed)+'/100';
   };
   function evidenceLine(value, operation, demo=false) {
-    const source=demo?'DEMO · Eğitim senaryosu':value?.provider;
+    const source=demo?w('demoSource'):value?.provider;
     const stateLabel=value?w(value.state):w('sourceUnavailable');
     return `<p class="lab-evidence">${[source,operation,stateLabel,value?.queriedAt&&textDate(value.queriedAt)].filter(Boolean).map(h).join(' · ')}</p>`;
   }
@@ -422,7 +473,7 @@
     return `
       ${report.issues.pool?`<p class="lab-notice">${w(report.issues.pool)}</p>`:''}
       ${evidenceLine(evidence,'',report.demo)}
-      ${age!==null?`<p class="lab-notice">${w('staleAge')} · ${h(age<60?format(age)+(langIndex()?' sec':' sn'):format(Math.floor(age/60))+(langIndex()?' min':' dk'))}</p>`:''}
+      ${age!==null?`<p class="lab-notice">${w('staleAge')} · ${h(age<60?format(age)+' '+w('unitSec'):format(Math.floor(age/60))+' '+w('unitMin'))}</p>`:''}
       ${pool?.provider==='GeckoTerminal'?`<p>${w('alternatePool')}</p>`:''}
       ${pool?.previousAddress?`<p>${w('switchedPool')} · <code>${h(pool.previousAddress)}</code></p>`:''}
       ${pool&&!report.demo?`<p>${pool.dex?h(pool.dex)+' · ':''}<code>${h(pool.address)}</code> · <a href="${host}${h(pool.address)}" target="_blank" rel="noopener noreferrer">${w('viewPool')}</a></p>`:''}
@@ -519,31 +570,16 @@
     comparison.active=false;
     comparison.entries.clear();
   }
+  const decimalSeparator=()=>(1.1).toLocaleString(locale()).charAt(1);
   function displaySupply(chain) {
     if(!chain?.supply||!Number.isInteger(chain.decimals)||chain.decimals<0||chain.decimals>255)return w('unknown');
     if(!chain.decimals)return chain.supply;
     const padded=chain.supply.padStart(chain.decimals+1,'0');
     const suffix=padded.slice(-chain.decimals).replace(/0+$/,'');
-    return padded.slice(0,-chain.decimals)+(suffix?(langIndex()?'.':',')+suffix:'');
+    return padded.slice(0,-chain.decimals)+(suffix?decimalSeparator()+suffix:'');
   }
   function criterionMethod(id) {
-    const tr=[
-      'Aktif yetki tam risk puanı, kapalı yetki sıfır puan.',
-      'Aktif yetki tam risk puanı, kapalı yetki sıfır puan.',
-      '%20, %40, %60 ve %80 üst sınırları sırasıyla 0, 7, 15 ve 21 risk puanı. %80 üzeri 25.',
-      'USD likiditesi alt sınırları 5 bin, 25 bin, 100 bin ve 1 milyon. Karşılık gelen risk puanları 17, 12, 5 ve 0. 5 bin altı 20 puan.',
-      '24 saatte işlem ve USD hacmi alt sınırları (20 / 1 bin), (100 / 10 bin), (1.000 / 100 bin) için risk sırasıyla 6, 3, 0. Daha düşük pozitif aktivite 9, sıfır aktivite veya hacim 10.',
-      'Doğrulama yoksa 5 risk puanı. Organic Score her 20 puanda 1 risk puanı düşürür (azami 5).'
-    ];
-    const en=[
-      'Enabled earns full risk points, disabled earns zero.',
-      'Enabled earns full risk points, disabled earns zero.',
-      'At most 20%, 40%, 60% and 80% contribute 0, 7, 15 and 21 risk points. Above 80% contributes 25.',
-      'USD liquidity minimums of 5k, 25k, 100k and 1m contribute 17, 12, 5 and 0. Below 5k contributes 20.',
-      'Trade count and USD volume thresholds of (20 / 1k), (100 / 10k), and (1,000 / 100k) contribute 6, 3, and 0 risk points. Lower positive activity contributes 9, and zero trades or volume contributes 10.',
-      'Unverified contributes 5 risk points. Every 20 Organic Score points reduces risk by 1 (up to 5).'
-    ];
-    return (langIndex()?en:tr)[['mint','freeze','holders','liquidity','activity','verification'].indexOf(id)];
+    return Object.hasOwn(words,'method_'+id)?w('method_'+id):'';
   }
   function groupNotes(items) {
     return items.length?`<ul>${items.map(row=>`<li>${w(row.id)} · ${h(explain(row))}${row.points==null?'':` (${row.points}/${row.weight})`}</li>`).join('')}</ul>`:`<p>${w('clear')}</p>`;
@@ -570,7 +606,7 @@
       ['count',format(m?.holders)],['verified',m?.verified==null?w('unknown'):w(m.verified?'yes':'no')],['organic',format(m?.organic)]];
     root.innerHTML=`<article class="lab-report">
       <header class="lab-report-head"><div>${m?.icon?`<img class="lab-token-icon" src="${h(m.icon)}" referrerpolicy="no-referrer" alt="">`:''}
-      ${r.demo?'<p class="lab-notice"><strong>DEMO · Bu karnedeki değerler ve yetki adresleri eğitim senaryosudur.</strong></p>':''}<p class="eyebrow">${w('report')} · ${networkName()}</p><h2>${h(identity)} ${m?.symbol?`<small>${h(m.symbol)}</small>`:''}</h2><code>${h(r.mint)}</code>
+      ${r.demo?`<p class="lab-notice"><strong>${w('demoReport')}</strong></p>`:''}<p class="eyebrow">${w('report')} · ${networkName()}</p><h2>${h(identity)} ${m?.symbol?`<small>${h(m.symbol)}</small>`:''}</h2><code>${h(r.mint)}</code>
       <p>${w('last')} · ${h(textDate(r.analyzedAt))}</p></div>
       <div class="lab-report-actions">${controlled('share','share')}${controlled('print','print')}<small role="status">${h(state.shareMessage)}</small></div></header>
       ${section('lab-findings','onChain',`<dl class="lab-judge-authorities">${risk.criteria.slice(0,2).map(authorityFinding).join('')}</dl>
@@ -580,14 +616,14 @@
         <p><a href="${h(chainLink)}" target="_blank" rel="noopener noreferrer">${w('explorer')}</a></p>`)}
       ${section('lab-risk','risk',`<div class="lab-score">
         <strong>${risk.score==null?'—':risk.score+'/100'}</strong><div><b>${w(risk.category||'partial')}</b><p>${w('coverage')} · ${risk.coverage}/100${risk.score==null&&risk.coverage>0?` · ${w('range')} ${risk.points}–${risk.upper}`:''}</p></div>
-        </div><p>${w('riskDirection')}</p><details class="lab-risk-details"><summary>${langIndex()?'How was this score calculated?':'Skor nasıl hesaplandı?'}</summary><div class="lab-criteria">${risk.criteria.map(row=>`<div><b>${w(row.id)}</b><strong>${row.points??'—'}/${row.weight}</strong><p>${h(r.accountScope&&row.id==='holders'?w('nativeScope'):explain(row))}</p><small>${h(r.accountScope&&row.id==='holders'?scopeMessage(r.accountScope):criterionMethod(row.id))}</small></div>`).join('')}</div></details><p class="lab-notice">${w('disclaimer')}</p>`)}
+        </div><p>${w('riskDirection')}</p><details class="lab-risk-details"><summary>${w('scoreHow')}</summary><div class="lab-criteria">${risk.criteria.map(row=>`<div><b>${w(row.id)}</b><strong>${row.points??'—'}/${row.weight}</strong><p>${h(r.accountScope&&row.id==='holders'?w('nativeScope'):explain(row))}</p><small>${h(r.accountScope&&row.id==='holders'?scopeMessage(r.accountScope):criterionMethod(row.id))}</small></div>`).join('')}</div></details><p class="lab-notice">${w('disclaimer')}</p>`)}
       <div class="lab-start">
         ${section('lab-chain','rpc',`${r.issues.rpc?`<p class="lab-notice">${w(r.issues.rpc)}</p>`:''}
           ${c?.program?`<p>${h(c.program)} · Slot ${format(c.slot)}</p>`:''}
           <dl class="lab-metrics">${risk.criteria.slice(0,2).map(row=>metric(row.id,explain(row))).join('')}${metric('supply',displaySupply(c))}${metric('decimals',format(c?.decimals))}</dl>
           ${metricStatus(r,'rpc')}
           ${metadataDetails(r.metadata)}${metricStatus(r,'metadata')}
-          <details class="lab-risk-details"><summary>${langIndex()?'What do these fields mean?':'Bu bilgiler ne anlama gelir?'}</summary>
+          <details class="lab-risk-details"><summary>${w('fieldsMeaning')}</summary>
             <dl class="lab-terms"><dt>${w('mint')}</dt><dd>${w('mintHelp')}</dd><dt>${w('freeze')}</dt><dd>${w('freezeHelp')}</dd><dt>${w('metadata')}</dt><dd>${w('metadataHelp')}</dd></dl>
           </details>
           ${['mintAuthority','freezeAuthority'].map(key=>typeof c?.[key]==='string'?`<p>${w(key==='mintAuthority'?'mint':'freeze')}: <code>${h(c[key])}</code></p>`:'').join('')}
@@ -614,7 +650,7 @@
           ${evidenceLine(evidence.jupiter,'',r.demo)}
           ${metricStatus(r,'jupiter')}
           ${m&&!r.demo?`<p><a href="https://jup.ag/tokens/${r.mint}" target="_blank" rel="noopener noreferrer">${w('viewJupiter')}</a></p>`:''}`)}
-      ${section('lab-analyst','analyst',`${r.demo?'<p class="lab-notice">DEMO · Model bağlantısı kullanılmaz. Özet karnedeki örnek ölçümlerden hazırlanır.</p>'+controlled('demo-summary','rules','primary'):!r.aiAvailable?'':controlled('ai','aiAction','primary')}
+      ${section('lab-analyst','analyst',`${r.demo?`<p class="lab-notice">${w('demoModel')}</p>`+controlled('demo-summary','rules','primary'):!r.aiAvailable?'':controlled('ai','aiAction','primary')}
         <p role="status">${state.aiMessage?w(state.aiMessage):''}</p>
         ${state.ai?`<p class="lab-ai-output">${r.demo?'':`<strong>${w('aiGenerated')}</strong><br>`}${h(state.ai)}</p>`:''}
         <h3>${w('rules')}</h3><div class="lab-criteria"><div><b>${w('good')}</b>${groupNotes(risk.criteria.filter(x=>x.points===0))}</div>
@@ -648,7 +684,7 @@
   async function runAi() {
     if(!state.report?.aiAvailable||state.aiMessage==='loading')return;
     const run=++state.aiRun;state.aiMessage='loading';repaintReport();
-    try {const r=await request('analyst',{network:state.network,mint:state.report.mint,language:langIndex()?'en':'tr',reportId:state.report.reportId},'POST');if(run===state.aiRun&&r.reportId===state.report?.reportId){state.ai=r.output;state.aiMessage='';}}
+    try {const r=await request('analyst',{network:state.network,mint:state.report.mint,language:labLang(),reportId:state.report.reportId},'POST');if(run===state.aiRun&&r.reportId===state.report?.reportId){state.ai=r.output;state.aiMessage='';}}
     catch(error){if(run===state.aiRun)state.aiMessage=error.message;}
     repaintReport();
   }
@@ -682,11 +718,11 @@
         <a class="btn ${connect?'':'primary'}" href="${h(phantomBrowse(target))}">${w('openPhantom')}</a>
         <a class="btn" href="https://phantom.com/download" target="_blank" rel="noopener noreferrer">${w('walletInstall')}</a>
       </div>
-      <details class="lab-phantom-help"><summary>${langIndex()?'Phantom did not open?':'Phantom açılmadı mı?'}</summary>
-        <p>${langIndex()?'Copy the Mercek link. Open Phantom, go to Sites and paste the link into its search bar. Open the result, then choose Connect wallet.':'Mercek bağlantısını kopyala. Phantom’u aç, Siteler bölümündeki arama çubuğuna bağlantıyı yapıştır. Sayfayı açınca Cüzdanı bağla seçeneğini kullan.'}</p>
-        <label for="lab-phantom-url">${langIndex()?'Mercek wallet link':'Mercek cüzdan bağlantısı'}</label>
+      <details class="lab-phantom-help"><summary>${w('phantomHelp')}</summary>
+        <p>${w('phantomHelpBody')}</p>
+        <label for="lab-phantom-url">${w('phantomLinkLabel')}</label>
         <div class="lab-input-row"><input id="lab-phantom-url" type="url" value="${h(target)}" readonly>
-        <button class="btn" type="button" data-lab-action="copy-wallet-link">${langIndex()?'Copy link':'Bağlantıyı kopyala'}</button></div>
+        <button class="btn" type="button" data-lab-action="copy-wallet-link">${w('copyLink')}</button></div>
         <p id="lab-phantom-copy-status" role="status"></p>
       </details>`;
     return `${phantomButton||connect?`<div class="lab-actions">${phantomButton}${connect?select+connect:''}</div>`:''}${mobile}`;
@@ -754,7 +790,7 @@
       {...token,symbol:w('walletWrapped')}:token):p?.tokens;
     const held=p?.native?[{...p.native,symbol:'SOL'},...tokens]:tokens??[];
     const needsRetry=!!(p&&!state.demo&&(p.missingReads?.length||p.pricePending||p.priceFailed||state.network==='mainnet'&&p.pricedAssets<p.observedAssets));
-    el.innerHTML=section('lab-portfolio','wallet',`${state.demo?'<p class="lab-notice">DEMO cüzdan · Hayalî bakiye ve varlıklar. Gerçek cüzdan bağlantısı kurulmaz.</p>':`<p>${w('walletConsent')}</p>`}<p>${w('note')}</p>
+    el.innerHTML=section('lab-portfolio','wallet',`${state.demo?`<p class="lab-notice">${w('demoWallet')}</p>`:`<p>${w('walletConsent')}</p>`}<p>${w('note')}</p>
       ${state.wallet?`
         ${state.demo?'':`<strong>${w(state.wallet.readOnly?'walletReadOnly':'walletConnected')}</strong>`}
         <p><button type="button" class="btn" data-lab-action="wallet-address" title="${h(state.wallet.address)}">${h(short(state.wallet.address))}</button> · ${networkName()} · <b>${h(sol)}</b></p>
@@ -762,7 +798,7 @@
         <div class="lab-actions">${controlled('disconnect',state.wallet.readOnly?'walletClear':'disconnect')}
           <button type="button" class="btn" data-lab-action="wallet"${['loading','walletPricingMore'].includes(state.walletMessage)?' disabled':''}>${w('refresh')}</button>
           ${needsRetry&&p.proof?`<button type="button" class="btn" data-lab-action="wallet-retry"${['loading','walletPricingMore'].includes(state.walletMessage)?' disabled':''}>${w('refreshMissing')}</button>`:''}</div>`
-        :state.demo?`<div class="lab-actions"><button class="btn primary" data-lab-action="connect">Demo cüzdanını aç</button>${controlled('wallet-live','walletLiveAction')}</div>`:walletEntry()}
+        :state.demo?`<div class="lab-actions"><button class="btn primary" data-lab-action="connect">${w('demoWalletOpen')}</button>${controlled('wallet-live','walletLiveAction')}</div>`:walletEntry()}
       <p id="lab-wallet-status" role="status">${state.walletMessage?w(state.walletMessage):''}</p>
       ${p?`<dl class="lab-metrics">${inJury?metric('baseBalance',sol):''}${metric('valuation',p.valuationComplete||state.demo?usd(p.knownUsd):w('valuationUnavailable'))}${!state.demo&&!p.valuationComplete&&p.knownUsd!=null?metric('subtotal',usd(p.knownUsd)):''}${metric('accountCoverage',p.accountCoverage+'/2')}</dl>
       ${p.reads?`<ul class="lab-wallet-sources">${[['balance',w('baseBalance')],['spl','SPL Token'],['token2022','Token-2022']].map(([key,label])=>`<li>${evidenceLine(p.reads[key],label+(p.reads[key]?.slot?' · Slot '+format(p.reads[key].slot):''))}</li>`).join('')}
@@ -816,7 +852,7 @@
     state.walletAi=null;state.walletAiStatus='loading';repaintWallet();
     try{
       const data=await request('wallet-analyst',{network:portfolio.network,address:state.wallet.address,
-        proof:portfolio.proof,language:langIndex()?'en':'tr'},'POST');
+        proof:portfolio.proof,language:labLang()},'POST');
       if(run===state.walletAiRun&&portfolio===state.portfolio){state.walletAi=data;state.walletAiStatus='';}
     }catch(error){
       if(run===state.walletAiRun&&portfolio===state.portfolio)state.walletAiStatus=error.message==='wallet_snapshot_expired'?error.message:'walletAiUnavailable';
@@ -884,21 +920,21 @@
   function pickerItems(){
     const known=examples[state.network];
     const map=new Map([...known,...state.pickerRemote].map(item=>[item.mint,item]));
-    const query=state.pickerQuery.toLocaleLowerCase('tr').trim();
-    return [...map.values()].filter(item=>[item.name,item.symbol,item.mint].some(value=>value.toLocaleLowerCase('tr').includes(query)));
+    const query=state.pickerQuery.toLocaleLowerCase(locale()).trim();
+    return [...map.values()].filter(item=>[item.name,item.symbol,item.mint].some(value=>value.toLocaleLowerCase(locale()).includes(query)));
   }
   function repaintTokenPicker(){
     const options=document.querySelector('#lab-token-options');if(!options)return;
     const items=pickerItems();
-    options.innerHTML=items.length?items.map(item=>`<button type="button" class="lab-token-option" data-pick-mint="${h(item.mint)}"><span><strong>${h(item.name)}</strong> <small>${h(item.symbol)}</small><code>${h(item.mint)}</code></span><span>Seç ve analiz et</span></button>`).join(''):'<p>Listede eşleşme yok. Diğer tokenları ara düğmesini kullanabilir veya mint adresini aşağıya yapıştırabilirsin.</p>';
+    options.innerHTML=items.length?items.map(item=>`<button type="button" class="lab-token-option" data-pick-mint="${h(item.mint)}"><span><strong>${h(item.name)}</strong> <small>${h(item.symbol)}</small><code>${h(item.mint)}</code></span><span>${w('pickerSelect')}</span></button>`).join(''):`<p>${w('pickerEmpty')}</p>`;
     document.querySelector('#lab-token-search-status').textContent=state.pickerMessage;
   }
   async function searchTokens(){
     const query=state.pickerQuery.trim();if(query.length<2){state.pickerMessage='En az iki karakter yaz.';repaintTokenPicker();return;}
-    if(state.network!=='mainnet'){state.pickerMessage='Jupiter araması Mainnet içindir. Devnet mint adresini aşağıya girebilirsin.';repaintTokenPicker();return;}
-    const run=++state.pickerRun;state.pickerMessage='Jupiter üzerinde aranıyor…';repaintTokenPicker();
-    try{const result=await request('search',{query});if(run!==state.pickerRun)return;state.pickerRemote=result.items;state.pickerMessage=result.items.length?'Jupiter · '+result.items.length+' sonuç. İsim ve mint adresini birlikte kontrol et.':'Jupiter eşleşme döndürmedi.';}
-    catch(error){if(run!==state.pickerRun)return;state.pickerMessage='Arama kaynağına erişilemedi. '+w(error.message)+' Kayıtlı tokenları seçebilir veya mint adresi girebilirsin.';}
+    if(state.network!=='mainnet'){state.pickerMessage=w('pickerDevnet');repaintTokenPicker();return;}
+    const run=++state.pickerRun;state.pickerMessage=w('pickerSearching');repaintTokenPicker();
+    try{const result=await request('search',{query});if(run!==state.pickerRun)return;state.pickerRemote=result.items;state.pickerMessage=result.items.length?wf('pickerResults',{n:result.items.length}):w('pickerNoResults');}
+    catch(error){if(run!==state.pickerRun)return;state.pickerMessage=wf('pickerFailed',{reason:w(error.message)});}
     repaintTokenPicker();
   }
   function validSolanaAddress(address) {
@@ -972,7 +1008,7 @@
       if(action==='guide'){startGuide('solana-lab');return;}
       if(action==='demo-summary'){
         const r=state.report;
-        state.ai=`${r.market.name} · Demo karnesinde risk göstergesi ${r.risk.score}/100, veri kapsamı ${r.risk.coverage}/100. Mint yetkisi ${r.chain.mintAuthority===null?'kapalı':'etkin'}, freeze yetkisi ${r.chain.freezeAuthority===null?'kapalı':'etkin'}. En büyük örnek token hesabı arzın %${r.concentration} payını temsil ediyor. Likidite ${usd(r.pool.liquidity)}. Yetkiler token üretme ve hesap dondurma yeteneği açısından, yoğunlaşma ve likidite ise piyasa hareketlerinin etkisi açısından birlikte okunmalıdır. Değerler eğitim senaryosudur. Kural tabanlı açıklama · yatırım tavsiyesi değildir.`;
+        state.ai=wf('demoSummary',{name:r.market.name,score:r.risk.score,coverage:r.risk.coverage,mint:w(r.chain.mintAuthority===null?'authClosed':'authOpen'),freeze:w(r.chain.freezeAuthority===null?'authClosed':'authOpen'),share:r.concentration,liquidity:usd(r.pool.liquidity)});
         repaintReport();return;
       }
       if(action==='market'){navigate('home');if(!demoSession)enterDemo();}
@@ -993,7 +1029,7 @@
         }catch{
           field.focus();
           field.select();
-          status.textContent=langIndex()?'Link selected. Use your device’s Copy option.':'Bağlantı seçildi. Cihazındaki Kopyala seçeneğini kullan.';
+          status.textContent=w('linkSelected');
         }
       }
       if(action==='wallet-address'){const full=root.querySelector('#lab-full-address');full.hidden=!full.hidden;}
